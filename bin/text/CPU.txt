@@ -20,7 +20,7 @@ More intense programs use more CPU.
 The most complicated part of the CPU info, is 
 the frequency. CPU's and other similar parts run at a certain clock speed, which is the rate the 
 processor performs operations.
-Tshis is measured GHz in today's speeds. 
+This is measured GHz in today's speeds. 
 Older CPU's might be measured at MHz. 
 
 1 GHz is 1000 MHz
