@@ -1,0 +1,3 @@
+This section is on the things 
+you see in the program, 
+and basic explanations for them.
