@@ -5,7 +5,7 @@ This GUI application is designed to display simple system stats, and also have a
 
 ### It requires psutil, PIL and of course tkinter.
 
-You can install they using:
+You can install them using:
 >py -m pip psutil
 
 >py -m pip pillow 
