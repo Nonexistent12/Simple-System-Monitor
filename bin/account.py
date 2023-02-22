@@ -58,7 +58,6 @@ def create(): #this is the main window function, it creates the window and all o
 def submit(): #this is used for when you click the submit button, it checks if every entry has been 
    
     suffix = emailvar.get() #gets the email
-    suffix #gets the last 4 characters of it
     
     if "@" in emailvar.get() and (suffix[-4:] in endings or suffix[-3:] in endings): #checks if there is a @ symbol
         
