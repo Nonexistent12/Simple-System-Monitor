@@ -5,7 +5,7 @@ from tkinter import ttk
 from PIL import Image,  ImageTk
 
 
-endings = [".com", ".org",  ".edu", ".net"] #common 3 letter email endings, I can't really see anyone using a .info or .us email with this program.
+endings = [".com", ".org",  ".edu", ".net", ".us", ".co"] #common email endings, this list is used to check for them in the entered email
 
 def create(): #this is the main window function, it creates the window and all of its features
     
@@ -15,8 +15,10 @@ def create(): #this is the main window function, it creates the window and all o
     window1.title('Create Account')
     
    
-    
-    window1.geometry('360x150')
+    posX= int(window1.winfo_screenwidth()/2 - 360/2)
+    posY = int(window1.winfo_screenheight()/2 - 150/2 ) 
+    print(str(posX))
+    window1.geometry('%dx%d+%d+%d' % (360, 150, posX, posY)) #centers the window
     
     
     window1.resizable(False,  False)
@@ -56,9 +58,9 @@ def create(): #this is the main window function, it creates the window and all o
 def submit(): #this is used for when you click the submit button, it checks if every entry has been 
    
     suffix = emailvar.get() #gets the email
-    suffix = suffix[-4:] #gets the last 4 characters of it
+    suffix #gets the last 4 characters of it
     
-    if "@" in emailvar.get() and suffix in endings: #checks if there is a @ symbol
+    if "@" in emailvar.get() and (suffix[-4:] in endings or suffix[-3:] in endings): #checks if there is a @ symbol
         
         
         if passwrdvar.get() == "" or cpasswrdvar.get() == "": #makes sure there is a entry in both passwords
@@ -80,10 +82,13 @@ def submit(): #this is used for when you click the submit button, it checks if e
 
 
 def popup(msg): #creates a popup window that displays a message corresponding to whatever the user is missing in the entries
+    
     pop = Toplevel(window1) #makes the popup a child of the create account window
     pop.iconphoto(False,  icon)
     
-    pop.geometry("300x64")
+    posX= int(pop.winfo_screenwidth()/2 - 300/2) 
+    posY = int(pop.winfo_screenheight()/2 - 64/2 ) 
+    pop.geometry('%dx%d+%d+%d' % (300, 64, posX, posY)) #centers the window
     
     ttk.Label(pop,  text=msg).pack()
     ttk.Button(pop,  text="Ok", command=pop.destroy).pack(pady=10)
