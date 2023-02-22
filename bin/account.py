@@ -59,7 +59,7 @@ def submit(): #this is used for when you click the submit button, it checks if e
    
     suffix = emailvar.get() #gets the email
     
-    if "@" in emailvar.get() and (suffix[-4:] in endings or suffix[-3:] in endings): #checks if there is a @ symbol
+    if "@" in emailvar.get() and (suffix[-4:] in endings or suffix[-3:] in endings): #checks if there is a @ symbol and if it has a proper ending
         
         
         if passwrdvar.get() == "" or cpasswrdvar.get() == "": #makes sure there is a entry in both passwords
