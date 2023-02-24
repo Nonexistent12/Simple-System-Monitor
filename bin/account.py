@@ -15,10 +15,9 @@ def create(): #this is the main window function, it creates the window and all o
     window1.title('Create Account')
     
    
-    posX= int(window1.winfo_screenwidth()/2 - 360/2)
-    posY = int(window1.winfo_screenheight()/2 - 150/2 ) 
-    print(str(posX))
-    window1.geometry('%dx%d+%d+%d' % (360, 150, posX, posY)) #centers the window
+    posX= int(window1.winfo_screenwidth()/2 - 640/2)
+    posY = int(window1.winfo_screenheight()/2 - 160/2 ) 
+    window1.geometry('%dx%d+%d+%d' % (640, 160, posX, posY)) #centers the window
     
     
     window1.resizable(False,  False)
@@ -35,22 +34,30 @@ def create(): #this is the main window function, it creates the window and all o
     icon = ImageTk.PhotoImage(Image.open('bin/icons/logo.ico')) #icon on window
     window1.iconphoto(False, icon)
     
+    #creates image for create account screen
+    image= Image.open('bin/icons/logo.png')
+    image = image.resize((120, 120))
+    image = ImageTk.PhotoImage(image)
+    ttk.Label(window1,  image=image).grid(column=2,  row=0, padx=30)
+    
     #Email entry
-    ttk.Label(frame,  text="Email: ", font=(10)).grid(column=0, row=0,  sticky=NW)
-    ttk.Entry(frame,  textvariable = emailvar).grid(column=1, row=0, sticky=N, ipadx=30)
+    ttk.Label(frame,  text="Email: ", font=(10)).grid(column=0, row=0,  sticky=NW,  ipadx=20)
+    ttk.Entry(frame,  textvariable = emailvar).grid(column=1, row=0, sticky=N, ipadx=70)
     
     #First password entry
-    ttk.Label(frame,  text="Password: ",  font=(10)).grid(column=0,  row=1,  sticky=NW, pady=10)
-    ttk.Entry(frame,  textvariable = passwrdvar, show="*").grid(column=1, row=1, sticky=N, ipadx=30, pady=10)
+    ttk.Label(frame,  text="Password: ",  font=(10)).grid(column=0,  row=1,  sticky=NW, pady=10,  ipadx=20)
+    ttk.Entry(frame,  textvariable = passwrdvar, show="*").grid(column=1, row=1, sticky=N, ipadx=70, pady=10)
     
     #Second password entry
-    ttk.Label(frame,  text="Confirm Password: ",  font=(10)).grid(column=0,  row=2,  sticky=NW, pady=10)
-    ttk.Entry(frame,  textvariable = cpasswrdvar, show="*").grid(column=1, row=2, sticky=N, ipadx=30, pady=10)
+    ttk.Label(frame,  text="Confirm Password: ",  font=(10)).grid(column=0,  row=2,  sticky=NW, pady=10 ,  ipadx=20)
+    ttk.Entry(frame,  textvariable = cpasswrdvar, show="*").grid(column=1, row=2, sticky=N, ipadx=70, pady=10)
     
-    #submit and exit buttons
+    #submit and exit button1
     ttk.Button(frame,  text="Submit", command=submit).grid(column=1, row=6, sticky=S)
     ttk.Button(frame,  text="Exit", command=quit).grid(column=0, row=6,   sticky=SW)
     
+    
+
     
     window1.mainloop()
     
