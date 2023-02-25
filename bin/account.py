@@ -31,6 +31,10 @@ def create(): #this is the main window function, it creates the window and all o
     passwrdvar = StringVar()
     cpasswrdvar = StringVar()
     
+    
+    
+    
+    
     icon = ImageTk.PhotoImage(Image.open('bin/icons/logo.ico')) #icon on window
     window1.iconphoto(False, icon)
     
@@ -57,11 +61,23 @@ def create(): #this is the main window function, it creates the window and all o
     ttk.Button(frame,  text="Exit", command=quit).grid(column=0, row=6,   sticky=SW)
     
     
+    window1.bind("<Return>", enter) #binds Enter Key to the enter function
 
     
     window1.mainloop()
+
+
+def enter(event): #used for when the user presses enter on the window, it runs the submit function if a popup isnt present, if it is then it destroys it.
+   
+    try:
+        if pop.state() == "normal":
+            pop.destroy()
+    except: 
+        
+        submit()
     
-    
+
+
 def submit(): #this is used for when you click the submit button, it checks if every entry has been 
    
     suffix = emailvar.get() #gets the email
@@ -88,8 +104,8 @@ def submit(): #this is used for when you click the submit button, it checks if e
 
 
 def popup(msg): #creates a popup window that displays a message corresponding to whatever the user is missing in the entries
-    
-    pop = Toplevel(window1) #makes the popup a child of the create account window
+    global pop
+    pop=Toplevel(window1) #makes the popup a child of the create account window
     pop.iconphoto(False,  icon)
     
     posX= int(pop.winfo_screenwidth()/2 - 300/2) 
