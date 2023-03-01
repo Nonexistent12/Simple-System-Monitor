@@ -28,7 +28,10 @@ def create(): #creates the user manual window
     selected=paths[0]
     mwindow = Toplevel()
     mwindow.title("User Manual")
-    mwindow.geometry("640x640")
+    
+    posX= int(mwindow.winfo_screenwidth()/2 - 640/2) #Position of X for the window in the center of the screen
+    posY = int(mwindow.winfo_screenheight()/2 - 640/2 ) 
+    mwindow.geometry('%dx%d+%d+%d' % (640, 640, posX, posY))
     mwindow.rowconfigure(0,  weight=1)
     mwindow.columnconfigure(0,  weight=1)
     mwindow.iconphoto(False,  ImageTk.PhotoImage(Image.open('bin/icons/logo.ico')))

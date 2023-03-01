@@ -1,7 +1,7 @@
 #Author: Marcus H.
 #Description: This file controls the create account part of the program, it can take a email, and a password, and verify them as correctly inputted. It does not actually save any passwords or create any accounts, its simply a demonstration of Tkinter and my code writing.
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk,  filedialog
 from PIL import Image,  ImageTk
 
 
@@ -9,7 +9,7 @@ endings = [".com", ".org",  ".edu", ".net", ".us", ".co"] #common email endings,
 
 def create(): #this is the main window function, it creates the window and all of its features
     
-    global emailvar, passwrdvar, cpasswrdvar,  window1, icon
+    global emailvar, passwrdvar, cpasswrdvar,  window1, icon,  imagelabel,  logo
     window1 = Toplevel() #create account window
     frame = ttk.Frame(window1,  padding="10") #window frame
     window1.title('Create Account')
@@ -39,10 +39,11 @@ def create(): #this is the main window function, it creates the window and all o
     window1.iconphoto(False, icon)
     
     #creates image for create account screen
-    image= Image.open('bin/icons/logo.png')
-    image = image.resize((120, 120))
-    image = ImageTk.PhotoImage(image)
-    ttk.Label(window1,  image=image).grid(column=2,  row=0, padx=30)
+    logo= Image.open('bin/icons/logo.png')
+    logo = logo.resize((120, 120))
+    logo = ImageTk.PhotoImage(logo)
+    imagelabel = Label(window1,  image=logo)
+    imagelabel.grid(column=2,  row=0, padx=30)
     
     #Email entry
     ttk.Label(frame,  text="Email: ", font=(10)).grid(column=0, row=0,  sticky=NW,  ipadx=20)
@@ -57,7 +58,8 @@ def create(): #this is the main window function, it creates the window and all o
     ttk.Entry(frame,  textvariable = cpasswrdvar, show="*").grid(column=1, row=2, sticky=N, ipadx=70, pady=10)
     
     #submit and exit button1
-    ttk.Button(frame,  text="Submit", command=submit).grid(column=1, row=6, sticky=S)
+    ttk.Button(frame,  text="Submit", command=submit).grid(column=1, row=6, sticky=SW)
+    ttk.Button(frame,  text="Open Image", command=open).grid(column=1, row=6, sticky=SE)
     ttk.Button(frame,  text="Exit", command=quit).grid(column=0, row=6,   sticky=SW)
     
     
@@ -94,6 +96,8 @@ def submit(): #this is used for when you click the submit button, it checks if e
                 emailvar.set("")
                 passwrdvar.set("")
                 cpasswrdvar.set("")
+                imagelabel.configure(image=logo)
+                imagelabel.image=logo
                 
             
             else:
@@ -117,6 +121,21 @@ def popup(msg): #creates a popup window that displays a message corresponding to
     
     pop.resizable(False,  False)
     pop.grab_set() #puts on top of all the other windows, and you can't proceed without closing it
+    
+    
+    
+def open(): #creates a open file dialog so the user can select a image, than sets the image to the side to the new one.
+    
+    file = filedialog.askopenfilename(title ='"Open Image',  filetypes=((".jpg files",  "*.jpg"), (".png files",  "*.png"), (".gif files", "*.gif"))) #opens file dialog, filters for *.jpg, *.png, *.gif
+    try:
+        
+        img = Image.open(file)
+        img  =  img.resize((120, 120))
+        img = ImageTk.PhotoImage(img)
+        imagelabel.configure(image=img)
+        imagelabel.image=img
+    except:
+        pass
     
     
 def quit(): #exits the create account window
