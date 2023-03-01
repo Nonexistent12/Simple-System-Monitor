@@ -57,7 +57,7 @@ def create(): #this is the main window function, it creates the window and all o
     ttk.Label(frame,  text="Confirm Password: ",  font=(10)).grid(column=0,  row=2,  sticky=NW, pady=10 ,  ipadx=20)
     ttk.Entry(frame,  textvariable = cpasswrdvar, show="*").grid(column=1, row=2, sticky=N, ipadx=70, pady=10)
     
-    #submit and exit button1
+    #Submit, Open Image and Exit buttons
     ttk.Button(frame,  text="Submit", command=submit).grid(column=1, row=6, sticky=SW)
     ttk.Button(frame,  text="Open Image", command=open).grid(column=1, row=6, sticky=SE)
     ttk.Button(frame,  text="Exit", command=quit).grid(column=0, row=6,   sticky=SW)
