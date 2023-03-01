@@ -126,7 +126,7 @@ def popup(msg): #creates a popup window that displays a message corresponding to
     
 def open(): #creates a open file dialog so the user can select a image, than sets the image to the side to the new one.
     
-    file = filedialog.askopenfilename(title ='"Open Image',  filetypes=((".jpg files",  "*.jpg"), (".png files",  "*.png"), (".gif files", "*.gif"))) #opens file dialog, filters for *.jpg, *.png, *.gif
+    file = filedialog.askopenfilename(title ='"Open Image',  filetypes=(("All Files",  "*.*"), (".jpg files",  "*.jpg"), (".png files",  "*.png"), (".gif files", "*.gif"))) #opens file dialog, filters for *.jpg, *.png, *.gif, or all files
     try:
         
         img = Image.open(file)
@@ -134,8 +134,10 @@ def open(): #creates a open file dialog so the user can select a image, than set
         img = ImageTk.PhotoImage(img)
         imagelabel.configure(image=img)
         imagelabel.image=img
+        window1.focus()
     except:
-        pass
+        popup("Not a Supported File Type!")
+        
     
     
 def quit(): #exits the create account window
