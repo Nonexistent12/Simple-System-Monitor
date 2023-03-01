@@ -121,7 +121,7 @@ def menus(): #Creates the menus seen at the top of the window.
 
 
 
-def diskstats(): #gets info about the disks connected to the system, which include usb's. Because of the ever changing disks in a system, it will has to run a for loop to get all of them when refreshed. So if you plug a USB drive in, it will add it to the list.
+def diskstats(): #gets info about the disks connected to the system, which include USBs. Because of the ever changing disks in a system, it will has to run a for loop to get all of them when refreshed. So if you plug a USB drive in, it will add it to the list.
    
     index = 6 #index used for loop
     partitions = psutil.disk_partitions() #gets a list of partitions on the system
@@ -144,7 +144,7 @@ def diskstats(): #gets info about the disks connected to the system, which inclu
         index+=1
     
     
-    ttk.Button(ui, text="Exit",  command=quit).grid(column=0, row=index, pady=150,  sticky=SW) #althought these buttons are not related the diskstats, its easier to create them here after the index is run through.
+    ttk.Button(ui, text="Exit",  command=quit).grid(column=0, row=index, pady=150,  sticky=SW) #although these buttons are not related the diskstats, its easier to create them here after the index is run through.
     ttk.Button(ui, text="Refresh", command=refresh).grid(column=0, row=index, padx=75, pady=150,  sticky=SW)
         
    
@@ -167,7 +167,10 @@ def about(): #Creates a basic about window.
         centerimage = Image.open('bin/icons/logo.png')
         centerimage = centerimage.resize((96, 96))
         centerimage = ImageTk.PhotoImage(centerimage)
-        aboutwindow.geometry("240x190")
+        
+        posX= int(aboutwindow.winfo_screenwidth()/2 - 240/2)
+        posY = int(aboutwindow.winfo_screenheight()/2 - 190/2 ) 
+        aboutwindow.geometry('%dx%d+%d+%d' % (240, 190, posX, posY))
         aboutwindow.title("About")
         aboutwindow.iconphoto(True, logo)
         aboutwindow.resizable(False,  False)
