@@ -36,7 +36,7 @@ The account menu contains one item at the moment, the "Create Account" item. It 
 
 ![python_Bxb1QAwGlV](https://user-images.githubusercontent.com/69007574/222933101-1a4d4ed8-3fc8-426e-a244-3a642ae0065b.png)
 
-You can put your crenditials in, and even add a image(its recommended to have the image be 120x120:
+You can put your crenditials in, and even add a image(its recommended to have the image be 120x120):
 
 ![python_edGfdkXj3K](https://user-images.githubusercontent.com/69007574/222933121-d0bfd1fb-dde8-4a3a-a5fb-8e814da4d3da.png)
 
