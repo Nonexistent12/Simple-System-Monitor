@@ -34,7 +34,7 @@ def main(): #defines the main window, StringVars, and other stuff like icons
     ui = Tk() #window used for the main program
     ui.option_add('*tearOff', FALSE)
 
-    ui.title('Simple Monitor')
+    ui.title('Simple System Monitor')
     
     posX= int(ui.winfo_screenwidth()/2 - 480/2) #Position of X for the window in the center of the screen
     posY = int(ui.winfo_screenheight()/2 - 480/2 ) #Position of Y for the window in the center of the screen
