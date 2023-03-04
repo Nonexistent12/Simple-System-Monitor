@@ -18,7 +18,7 @@ You can install them using:
 
 # Features
 
-## Main Window
+ ## Main Window
 When you open the program it should look something like this:
 
 ![python_eIwKikJVci](https://user-images.githubusercontent.com/69007574/222932791-46321658-e717-4195-980b-9b812fc54428.png)
