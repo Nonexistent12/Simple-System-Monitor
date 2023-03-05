@@ -13,7 +13,7 @@ def create(): #this is the main window function, it creates the window and all o
     
     
     window1 = Toplevel() #create account window
-    frame = ttk.Frame(window1,  padding="10") #window frame
+    frame = ttk.Frame(window1,  padding="10") #window frame creation
     window1.title('Create Account')
     
     #centers the window
@@ -30,9 +30,9 @@ def create(): #this is the main window function, it creates the window and all o
     frame.columnconfigure(0,  weight=1)
    
    #entry variables
-    emailvar=StringVar()
-    passwrdvar = StringVar()
-    cpasswrdvar = StringVar()
+    emailvar=StringVar() #email entry variable
+    passwrdvar = StringVar() #password entry variable
+    cpasswrdvar = StringVar() #password confirmation entry variable
     
     
     
@@ -75,7 +75,7 @@ def create(): #this is the main window function, it creates the window and all o
 def enter(event): #used for when the user presses enter on the window, it runs the submit function if a popup isnt present, if it is then it destroys it.
    
     try:
-        if pop.state() == "normal":
+        if pop.state() == "normal": #if the popup window is open, then when enter is pressed it will be closed.
             pop.destroy()
     except: 
         
@@ -132,11 +132,11 @@ def open(): #creates a open file dialog so the user can select a image, than set
     file = filedialog.askopenfilename(title ='"Open Image',  filetypes=(("All Files",  "*.*"), (".jpg files",  "*.jpg"), (".png files",  "*.png"), (".gif files", "*.gif"))) #opens file dialog, filters for *.jpg, *.png, *.gif, or all files
     try:
         
-        img = Image.open(file)
+        img = Image.open(file) #sets img to file opened
         img  =  img.resize((120, 120))
         img = ImageTk.PhotoImage(img)
-        imagelabel.configure(image=img)
-        imagelabel.image=img
+        imagelabel.configure(image=img) #sets imagelabel's image to img
+        imagelabel.image=img 
         window1.focus()
     except:
         popup("Not a Supported File Type!")
