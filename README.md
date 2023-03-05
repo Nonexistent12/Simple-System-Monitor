@@ -24,7 +24,7 @@ When you open the program it should look something like this:
 ![python_eIwKikJVci](https://user-images.githubusercontent.com/69007574/222932791-46321658-e717-4195-980b-9b812fc54428.png)
 
 
-You can see that the main program contains the stats, which includes CPU, RAM and Hard Drives. At the bottom is an Exit button and Refresh button. The Exit button is self explantory, and the refresh button simply refreshs the window, for say if you put in a USB drive and you want it displayed.
+You can see that the main program contains the stats, which includes CPU, RAM and Hard Drives. At the bottom is an Exit button and Refresh button. The Exit button is self explantory, and the refresh button simply refreshes the window, for say if you put in a USB drive and you want it displayed.
 
 ## Menus
 They're are two menus, one for account related windows and one for helpful info.
