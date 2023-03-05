@@ -26,21 +26,19 @@ def activestats(): #This function collects hardware stats that are constantly ch
 
 
 def main(): #defines the main window, StringVars, and other stuff like icons
+    
     global ui
     global frame
     global cusage,  cpu,  cfreq,  rusage,  rtotal,  ravailable, cpuico, ramico, driveico,  logo
     
 
     ui = Tk() #window used for the main program
-    ui.option_add('*tearOff', FALSE)
+    ui.option_add('*tearOff', FALSE) #sets the ability for widgets to be "torn off" window to FALSE
 
     ui.title('Simple System Monitor')
     
     posX= int(ui.winfo_screenwidth()/2 - 480/2) #Position of X for the window in the center of the screen
     posY = int(ui.winfo_screenheight()/2 - 480/2 ) #Position of Y for the window in the center of the screen
-    
-    frame = ttk.Frame(ui,  padding="10") #main frame of the main window
-    
     ui.geometry('%dx%d+%d+%d' % (480, 480, posX, posY))
     
     
@@ -57,7 +55,8 @@ def main(): #defines the main window, StringVars, and other stuff like icons
     driveico = ImageTk.PhotoImage(driveico)
     logo = ImageTk.PhotoImage(logo)
     
-    
+    #creates frame and configures the UI window
+    frame = ttk.Frame(ui,  padding="10") #main frame of the main window
     frame.grid(sticky=(N, W, E, S))
     ui.rowconfigure(0, weight=0)
     ui.iconphoto(False,  logo)
@@ -86,13 +85,15 @@ def main(): #defines the main window, StringVars, and other stuff like icons
 
 
 def stats(): #collects stats that are non-changing unlike activestats()
-    #cpu stats
+    
+    #creates and sets cpu stats
     uname = plat.uname()
     cpu.set(f"CPU: {uname.processor}")
     ttk.Label(frame, image=cpuico, textvariable=cpu, compound='left',  background="#c2bebe",width=60, relief="solid").grid(column=0,  row=0, sticky=(W))
     ttk.Label(frame, textvariable=cusage).grid(column=0, row=1, sticky=(N))
     ttk.Label(frame,  textvariable=cfreq,  ).grid(column=0, row=2,  sticky=(N))
-    #ram stats
+    
+    #creates and sets ram stats
     rtotal.set(f"RAM Total: {round(mem.total*conversion,  1)} GB")
     ttk.Label(frame, image=ramico,   textvariable=rtotal, compound='left',  background="#c2bebe",width=60, relief="solid").grid(column=0, row=3,  sticky=(W))
     ttk.Label(frame,  textvariable=rusage).grid(column=0, row=4,  sticky=(N))
@@ -102,6 +103,7 @@ def stats(): #collects stats that are non-changing unlike activestats()
 
     
 def menus(): #Creates the menus seen at the top of the window.
+    
     #main menubar creation
     menubar = Menu(ui) #menubar
     menu_account = Menu(menubar,  tearoff=0)
@@ -130,8 +132,10 @@ def diskstats(): #gets info about the disks connected to the system, which inclu
     for partition in partitions:
         try: #Some disks have higher permissions or unmounted partitions, so we have to use the try method to prevent a program halt
             partition_usage = psutil.disk_usage(partition.mountpoint)
+        
         except PermissionError:
             continue 
+            
         except OSError:
             break
             
@@ -155,7 +159,7 @@ def refresh(): #Destroys the main window then restarts it by running main() agai
     
     
 def about(): #Creates a basic about window.
-    global aboutwindow
+    
     try:
         if aboutwindow.state() == "normal":
             aboutwindow.focus()
@@ -168,9 +172,12 @@ def about(): #Creates a basic about window.
         centerimage = centerimage.resize((96, 96))
         centerimage = ImageTk.PhotoImage(centerimage)
         
+        #centers window
         posX= int(aboutwindow.winfo_screenwidth()/2 - 240/2)
         posY = int(aboutwindow.winfo_screenheight()/2 - 190/2 ) 
         aboutwindow.geometry('%dx%d+%d+%d' % (240, 190, posX, posY))
+        
+        #configures about window look
         aboutwindow.title("About")
         aboutwindow.iconphoto(True, logo)
         aboutwindow.resizable(False,  False)
