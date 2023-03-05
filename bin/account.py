@@ -10,18 +10,21 @@ endings = [".com", ".org",  ".edu", ".net", ".us", ".co"] #common email endings,
 def create(): #this is the main window function, it creates the window and all of its features
     
     global emailvar, passwrdvar, cpasswrdvar,  window1, icon,  imagelabel,  logo
+    
+    
     window1 = Toplevel() #create account window
     frame = ttk.Frame(window1,  padding="10") #window frame
     window1.title('Create Account')
     
-   
+    #centers the window
     posX= int(window1.winfo_screenwidth()/2 - 640/2)
     posY = int(window1.winfo_screenheight()/2 - 160/2 ) 
     window1.geometry('%dx%d+%d+%d' % (640, 160, posX, posY)) #centers the window
     
-    
+    #sets the window to be unrealizable
     window1.resizable(False,  False)
-        
+    
+    #frame modification
     frame.grid(sticky=(N, W, E, S))
     frame.rowconfigure(0,  weight=1)
     frame.columnconfigure(0,  weight=1)
@@ -34,7 +37,7 @@ def create(): #this is the main window function, it creates the window and all o
     
     
     
-    
+    #creates icon used on window
     icon = ImageTk.PhotoImage(Image.open('bin/icons/logo.ico')) #icon on window
     window1.iconphoto(False, icon)
     
