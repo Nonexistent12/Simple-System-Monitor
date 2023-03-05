@@ -26,10 +26,8 @@ def activestats(): #This function collects hardware stats that are constantly ch
 
 
 def main(): #defines the main window, StringVars, and other stuff like icons
-    
-    global ui
-    global frame
-    global cusage,  cpu,  cfreq,  rusage,  rtotal,  ravailable, cpuico, ramico, driveico,  logo
+
+    global ui, frame, cusage,  cpu,  cfreq,  rusage,  rtotal,  ravailable, cpuico, ramico, driveico,  logo
     
 
     ui = Tk() #window used for the main program
@@ -66,12 +64,12 @@ def main(): #defines the main window, StringVars, and other stuff like icons
 
 
     #String Variables
-    cusage = StringVar()
-    cpu = StringVar()
-    cfreq = StringVar()
-    rusage = StringVar()
-    rtotal = StringVar()
-    ravailable= StringVar()
+    cusage = StringVar() #string var for cpu usage
+    cpu = StringVar() #string var of cpu model name
+    cfreq = StringVar() #string var of cpu frequency 
+    rusage = StringVar() # string var of ram usage
+    rtotal = StringVar() # string var of total ram capacity
+    ravailable= StringVar() #string var of available ram
     
     
     #function calls
